@@ -10,13 +10,13 @@ LX16A.initialize("/dev/ttyUSB0")
 try:
     #Left Side Servos
     servoL1 = LX16A(1)
-    #servoL1.set_angle_limits(129, 161)
+    servoL1.set_angle_limits(0, 240)
     servoL2 = LX16A(2)
-    #servoL2.set_angle_limits(120, 137)
+    servoL2.set_angle_limits(0, 240)
     servoL3 = LX16A(3)
-    #servoL3.set_angle_limits(129, 161)
+    servoL3.set_angle_limits(0, 240)
     servoL4 = LX16A(4)
-    #servoL4.set_angle_limits(120, 137)
+    servoL4.set_angle_limits(0, 240)
     
     #Right Side Servos
     servoR101 = LX16A(101)
@@ -48,16 +48,20 @@ def keyframe(m1,m2,n):
     #Indicate Motors are prepared for keyframing
     m1.led_power_on()
     m2.led_power_on()
+    motor_A = []
+    motor_B = []
 
     for i in range(n):
 
         input("Position the leg to the keyframe position, Press Enter to record its angles.")
-        motor_A = [i,m1.get_physical_angle()]
-        motor_B = [i,m1.get_physical_angle()]
+        motor_A += [i,m1.get_physical_angle()]
+        motor_B += [i,m1.get_physical_angle()]
 
     #reenable torque in the motors
-    m1.emable_torque()
+    m1.enable_torque()
     m2.enable_torque()
+    print([motor_A])
+    print([motor_B])
     return motor_A, motor_B
 
 #Servo 1 & 2 Key Framing (FRONT LEFT LEG)
