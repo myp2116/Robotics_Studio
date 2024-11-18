@@ -57,7 +57,7 @@ except ServoTimeoutError as e:
 #servoR104.move(R104_home)
 
 #time.sleep(1)
-punisher_mode = input("Type in desired robot mode: (1) - Pushups, (2) - Simple, (3) - Keyframe, (4) - Simulated, (5) - Optimized simulated")
+punisher_mode = int(input("Type in desired robot mode: (1) - Pushups, (2) - Simple, (3) - Keyframe, (4) - Simulated, (5) - Optimized simulated"))
 
 t = 0
 
@@ -65,21 +65,22 @@ t = 0
 if punisher_mode == 3: #keyframe mode
     while True:
         #Front left side leg
-        #Key Frame Method
         servoL1.move(160.608 + (-9.747) * cos(2*np.pi * 1 * t / 3) + (-12.668) * sin(2*np.pi * 1 * t / 3) + (8.499) * cos(2*np.pi * 2 * t / 3) + (5.798) * sin(2*np.pi * 2 * t / 3))
         servoL2.move(134.880 + (-9.385) * cos(2*np.pi * 1 * t / 3) + (-17.220) * sin(2*np.pi * 1 * t / 3) + (11.545) * cos(2*np.pi * 2 * t / 3) + (3.363) * sin(2*np.pi * 2 * t / 3))
     
         #Back left side leg
-        #servoL3.move(sin(t) * 15 + 145)
-        #servoL4.move(sin(t) * 8.5 + 128.5)
+        servoL3.move(173.712 + (-5.065) * cos(2*np.pi * 1 * t / 3) + (-8.396) * sin(2*np.pi * 1 * t / 3) + (6.313) * cos(2*np.pi * 2 * t / 3) + (0.110) * sin(2*np.pi * 2 * t / 3))
+        servoL4.move(135.168 + (-5.968) * cos(2*np.pi * 1 * t / 3) + (-15.865) * sin(2*np.pi * 1 * t / 3) + (10.240) * cos(2*np.pi * 2 * t / 3) + (1.172) * sin(2*np.pi * 2 * t / 3))
 
         #Front right Side Leg
-        #servoR101.move(cos(t) * 15 + 145)
-        #servoR102.move(cos(t) * 8.5 + 128.5)
+        servoR101.move(143.232 + (8.409) * cos(2*np.pi * 1 * t / 3) + (9.013) * sin(2*np.pi * 1 * t / 3) + (-8.121) * cos(2*np.pi * 2 * t / 3) + (0.524) * sin(2*np.pi * 2 * t / 3))
+        servoR102.move(134.304 + (8.877) * cos(2*np.pi * 1 * t / 3) + (17.702) * sin(2*np.pi * 1 * t / 3) + (-13.341) * cos(2*np.pi * 2 * t / 3) + (1.982) * sin(2*np.pi * 2 * t / 3))
 
         #Back Right Side leg
-        #servoR103.move(cos(t) * 15 + 145)
-        #servoR104.move(cos(t) * 8.5 + 128.5)
+        servoR103.move(106.944 + (6.412) * cos(2*np.pi * 1 * t / 3) + (12.383) * sin(2*np.pi * 1 * t / 3) + (-7.756) * cos(2*np.pi * 2 * t / 3) + (-3.703) * sin(2*np.pi * 2 * t / 3))
+        servoR104.move(110.016 + (2.062) * cos(2*np.pi * 1 * t / 3) + (20.960) * sin(2*np.pi * 1 * t / 3) + (-11.998) * cos(2*np.pi * 2 * t / 3) + (0.589) * sin(2*np.pi * 2 * t / 3))
     
         time.sleep(0.05)
         t += 0.1
+else:
+    exit
